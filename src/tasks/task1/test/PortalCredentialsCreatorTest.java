@@ -55,7 +55,6 @@ class PortalCredentialsCreatorTest {
         var actual = creator.createListOfUserNames(fakeStudentList);
         Assertions.assertEquals(expected, actual, "The list of students possibly contains duplicates!");
     }
-
     @Test
     void createListOfRandomPasswords() {
     }

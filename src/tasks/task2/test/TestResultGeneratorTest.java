@@ -9,6 +9,7 @@ import tasks.task2.code.Student;
 import tasks.task2.code.TestResultGenerator;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Set.of;
 
@@ -27,7 +28,7 @@ class TestResultGeneratorTest {
     private Student createFakeStudent() {
         Faker faker = new Faker(new Locale("en-IND"));
         return new Student((byte) faker.number().randomNumber(), faker.name().fullName(),
-                Long.parseLong(String.valueOf(faker.phoneNumber())), faker.number().numberBetween(1, 100));
+                Long.parseLong(faker.number().digits(10)), faker.number().numberBetween(0, 100));
     }
 
     private Set<Student> createSetOfFakeStudents(int number) {
@@ -40,7 +41,7 @@ class TestResultGeneratorTest {
 
     @Test
     void createEmptySetOfFailedStudents() {
-        var expected = Set.<String>of();
+        var expected = Set.of();
         Set<Student> studentSet = of();
         var actual = generator.getDetailsOfFailedStudents(studentSet);
         Assertions.assertEquals(expected, actual, "Method should be able to create empty set");
@@ -48,10 +49,25 @@ class TestResultGeneratorTest {
 
     @Test
     void getDetailsOfFailedStudents() {
+        var fakeStudentSet = createSetOfFakeStudents(10);
+        var expected = new HashSet<>(generator.getDetailsOfFailedStudents(fakeStudentSet));
+    }
 
+    private HashSet<Student> createHashSetOfFakeStudents(int number) {
+        HashSet<Student> fakeStudentSet = new HashSet<>();
+        for (int index = 0; index < number; index++) {
+            fakeStudentSet.add(createFakeStudent());
+        }
+        return fakeStudentSet;
     }
 
     @Test
     void sortStudentsForRanking() {
+        var fakeStudentSet = createHashSetOfFakeStudents(10);
+        Comparator<Student> markSorting = Comparator.comparingDouble(Student::getMarks);
+        var expected = generator.sortStudentsForRanking(fakeStudentSet).stream()
+                .sorted(markSorting).collect(Collectors.toSet());
+        var actual = generator.sortStudentsForRanking(fakeStudentSet);
+        Assertions.assertEquals(expected, actual, "Not sorted Set");
     }
 }

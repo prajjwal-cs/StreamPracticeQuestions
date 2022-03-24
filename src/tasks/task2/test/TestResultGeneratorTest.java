@@ -27,7 +27,7 @@ class TestResultGeneratorTest {
 
     private Student createFakeStudent() {
         Faker faker = new Faker(new Locale("en-IND"));
-        return new Student((byte) faker.number().randomNumber(), faker.name().fullName(),
+        return new Student((byte) faker.number().numberBetween(1, 80), faker.name().fullName(),
                 Long.parseLong(faker.number().digits(10)), faker.number().numberBetween(0, 100));
     }
 
@@ -50,7 +50,11 @@ class TestResultGeneratorTest {
     @Test
     void getDetailsOfFailedStudents() {
         var fakeStudentSet = createSetOfFakeStudents(10);
-        var expected = new HashSet<>(generator.getDetailsOfFailedStudents(fakeStudentSet));
+        var expected = fakeStudentSet.stream().filter(student -> student.getMarks() < 33.0)
+                .map(student -> student.getStudentName().concat("-").concat(String.valueOf(student.getGuardianContact())))
+                .collect(Collectors.toCollection(HashSet::new));
+        var actual = generator.getDetailsOfFailedStudents(fakeStudentSet);
+        Assertions.assertEquals(expected, actual, "May be they are not failed");
     }
 
     private HashSet<Student> createHashSetOfFakeStudents(int number) {

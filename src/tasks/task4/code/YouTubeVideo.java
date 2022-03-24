@@ -9,9 +9,11 @@ public class YouTubeVideo {
     private BigInteger numberOfLikes;
     private int durationInMinutes;
 
-    public YouTubeVideo(long videoId, String videoName) {
+    public YouTubeVideo(long videoId, String videoName, BigInteger numberOfLikes, int duration) {
         this.videoId = videoId;
         this.videoName = videoName;
+        this.numberOfLikes = numberOfLikes;
+        this.durationInMinutes = duration;
     }
 
     public long getVideoId() {

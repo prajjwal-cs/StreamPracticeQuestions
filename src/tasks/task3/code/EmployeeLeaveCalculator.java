@@ -2,13 +2,16 @@ package tasks.task3.code;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class EmployeeLeaveCalculator {
+
     public List<Short> getDefaulterEmployeeIDList(List<Employee> employeeList) {
         return employeeList.stream()
-                .filter(employee -> employee.getNumberOfLeaves() > 25)
-                .map(Employee::getEmployeeId).toList();
+                .filter(employee -> employee.getNumberOfLeaves() > 25).distinct()
+                .map(Employee::getEmployeeId)
+                .toList();
     }
 
     private String employeeDetail(Employee employee) {

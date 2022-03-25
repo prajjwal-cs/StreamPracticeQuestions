@@ -43,6 +43,7 @@ class EmployeeLeaveCalculatorTest {
     void getDefaulterEmployeeIDList() {
         var fakeEmployeeList = createListOfFakeEmployees(10);
         var expected = fakeEmployeeList.stream().filter(e -> e.getNumberOfLeaves() > 25)
+                .distinct()
                 .map(Employee::getEmployeeId).toList();
         var actual = employeeLeaveCalculator.getDefaulterEmployeeIDList(fakeEmployeeList);
         Assertions.assertEquals(expected, actual, "any non defaulter");

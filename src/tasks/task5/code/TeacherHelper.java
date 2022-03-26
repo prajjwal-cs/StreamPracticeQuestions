@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 public class TeacherHelper {
     public List<Teacher> findSubjectTeacher(List<Teacher> allTeachers, String subjectName) {
         return allTeachers.stream()
-                .filter(e -> e.getTeacherSubject().contains(subjectName))
                 .toList();
     }
 

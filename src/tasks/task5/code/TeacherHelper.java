@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class TeacherHelper {
     public List<Teacher> findSubjectTeacher(List<Teacher> allTeachers, String subjectName) {
         return allTeachers.stream()
+                .filter(e -> e.getTeacherSubject().contains(subjectName))
                 .toList();
     }
 
@@ -15,6 +16,7 @@ public class TeacherHelper {
     public Set<Teacher> getBusyTeachers(List<Teacher> allTeachers) {
         Predicate<Teacher> predicate = teacher -> teacher.getTeacherSubject().size() >= 3;
         return allTeachers.stream().filter(predicate)
+                .peek(e -> e.setTeacherSalary(e.getTeacherSalary() + e.getTeacherSalary() * 0.05))
                 .collect(Collectors.toSet());
     }
 

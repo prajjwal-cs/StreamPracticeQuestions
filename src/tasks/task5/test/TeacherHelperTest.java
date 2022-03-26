@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.w3c.dom.ls.LSInput;
 import tasks.task5.code.Teacher;
 import tasks.task5.code.TeacherHelper;
 
@@ -32,6 +33,15 @@ class TeacherHelperTest {
         }
         return new Teacher(String.valueOf(faker.number().randomNumber()), faker.name().fullName(),
                 (double) faker.number().randomNumber(), subjects);
+    }
+
+    private List<Teacher> createFaKeListOfTeachers(int number) {
+        List<Teacher> teacherList = new ArrayList<>();
+
+        for (int index = 0; index < number; index++) {
+            teacherList.add(createFakeTeacher());
+        }
+        return teacherList;
     }
 
     @Test

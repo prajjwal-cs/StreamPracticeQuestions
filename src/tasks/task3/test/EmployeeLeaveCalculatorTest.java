@@ -28,7 +28,7 @@ class EmployeeLeaveCalculatorTest {
         Faker faker = new Faker(new Locale("en-IND"));
         return new Employee((short) faker.number().numberBetween(100,999), faker.name().fullName(),
                 faker.number().randomDouble(2, 30000, 50000),
-                (byte) faker.number().numberBetween(0, 30));
+                (byte) faker.number().numberBetween(0, 50));
     }
 
     private List<Employee> createListOfFakeEmployees(int number) {

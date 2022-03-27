@@ -5,6 +5,7 @@ import tasks.task6.code.OnlineShop;
 import tasks.task6.code.SmartPhone;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -28,5 +29,9 @@ public class Task6Main {
         OnlineShop onlineShop = new OnlineShop();
         Set<SmartPhone> newPhones = createSetOfFakeSmartPhone(8);
 
+        System.out.println(newPhones);
+        List<SmartPhone> smartPhoneList = onlineShop.getListOfSmartPhones(newPhones, (byte) 6);
+        System.out.println(smartPhoneList);
+        System.out.println(newPhones);
     }
 }

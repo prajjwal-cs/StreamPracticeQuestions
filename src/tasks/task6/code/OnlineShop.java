@@ -5,12 +5,17 @@ import java.util.Set;
 
 
 public class OnlineShop {
+    private void priceDecrease(SmartPhone smartPhone) {
+        smartPhone.setSmartPhonePrice(smartPhone.getSmartPhonePrice() - smartPhone.getSmartPhonePrice() * 0.1);
+    }
+
     public List<SmartPhone> getListOfSmartPhones(Set<SmartPhone> smartPhones, byte requiredScreenSize) {
         smartPhones.stream().filter(smartPhone -> smartPhone.getScreenSize() < requiredScreenSize)
-                .peek(e -> e.setSmartPhonePrice(e.getSmartPhonePrice() - e.getSmartPhonePrice() * 0.1));
+                .forEach(this::priceDecrease);
         return smartPhones.stream()
-                .filter(smartPhone -> smartPhone.getScreenSize() >= requiredScreenSize)
+                .filter(smartPhone -> smartPhone.getScreenSize() > requiredScreenSize)
                 .toList();
+
     }
 
     public List<SmartPhone> findBudgetSmartPhones(Set<SmartPhone> smartPhones) {

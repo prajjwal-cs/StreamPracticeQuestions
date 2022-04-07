@@ -5,6 +5,7 @@ import tasks.task8.code.Book;
 import tasks.task8.code.BooksHelper;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ public class Task8Main {
     private static Book createFakeBooks() {
         Faker faker = new Faker(new Locale("en-IND"));
         return new Book(faker.idNumber().valid(), faker.book().title(), faker.book().author(),
-                faker.educator().course());
+                faker.programmingLanguage().name());
     }
 
     private static Set<Book> createSetOfFakeBooks(int number) {
@@ -25,6 +26,8 @@ public class Task8Main {
     public static void main(String[] args) {
         BooksHelper booksHelper = new BooksHelper();
         Set<Book> newBooks = createSetOfFakeBooks(5);
-
+        System.out.println(newBooks);
+        List<Book> sortedBookList = booksHelper.sortBooks(newBooks);
+        System.out.println(sortedBookList);
     }
 }

@@ -14,14 +14,14 @@ Create a java class file called `SmartPhone.java`. The `SmartPhone.java` class s
 Create a java class file called `OnlineShop.java`. The class should contain the following two methods:
 
 * ```java
-   public List<SmartPhone> getListOfSmartPhones(Set<SmartPhone> smartPhones, byte requiredScreenSize) {} 
+   public List<SmartPhone> getListOfSmartPhones(Set<SmartPhone> smartSmartPhones, byte requiredScreenSize) {} 
    ```
   This method inputs a `Set` of `SmartPhone` type and a required screen size value of `byte` type. This method will
   iterate through all the smartphone objects' set and find out the smartphones whose screen size is at least as large as
   the required screen size value. If you find a phone whose screen size is lesser, decrease its price by 10%
 
 * ```java
-   public List<SmartPhone> findBudgetSmartPhones(Set<SmartPhone> smartPhones) {}
+   public List<SmartPhone> findBudgetSmartPhones(Set<SmartPhone> smartSmartPhones) {}
    ```
   This method inputs a `Set` of `SmartPhone` type and returns a `List` of `SmartPhone` type. A budget smartphone is a
   phone whose price is less than or equal to ₹ 10,000.  

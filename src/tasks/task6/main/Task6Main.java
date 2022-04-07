@@ -27,11 +27,11 @@ public class Task6Main {
 
     public static void main(String[] args) {
         OnlineShop onlineShop = new OnlineShop();
-        Set<SmartPhone> newPhones = createSetOfFakeSmartPhone(8);
+        Set<SmartPhone> newSmartPhones = createSetOfFakeSmartPhone(8);
 
-        System.out.println(newPhones);
-        List<SmartPhone> smartPhoneList = onlineShop.getListOfSmartPhones(newPhones, (byte) 6);
-        System.out.println(smartPhoneList);
-        System.out.println(newPhones);
+        System.out.println(newSmartPhones);
+        List<SmartPhone> smartSmartPhoneList = onlineShop.getListOfSmartPhones(newSmartPhones, (byte) 6);
+        System.out.println(smartSmartPhoneList);
+        System.out.println(newSmartPhones);
     }
 }

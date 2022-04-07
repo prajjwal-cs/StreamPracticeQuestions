@@ -9,16 +9,16 @@ public class OnlineShop {
         smartPhone.setSmartPhonePrice(smartPhone.getSmartPhonePrice() - smartPhone.getSmartPhonePrice() * 0.1);
     }
 
-    public List<SmartPhone> getListOfSmartPhones(Set<SmartPhone> smartPhones, byte requiredScreenSize) {
-        smartPhones.stream().filter(smartPhone -> smartPhone.getScreenSize() < requiredScreenSize)
+    public List<SmartPhone> getListOfSmartPhones(Set<SmartPhone> smartSmartPhones, byte requiredScreenSize) {
+        smartSmartPhones.stream().filter(smartSmartPhone -> smartSmartPhone.getScreenSize() < requiredScreenSize)
                 .forEach(this::priceDecrease);
-        return smartPhones.stream()
-                .filter(smartPhone -> smartPhone.getScreenSize() > requiredScreenSize)
+        return smartSmartPhones.stream()
+                .filter(smartSmartPhone -> smartSmartPhone.getScreenSize() > requiredScreenSize)
                 .toList();
 
     }
 
-    public List<SmartPhone> findBudgetSmartPhones(Set<SmartPhone> smartPhones) {
-        return smartPhones.stream().filter(smartPhone -> smartPhone.getSmartPhonePrice() <= 10000.0).toList();
+    public List<SmartPhone> findBudgetSmartPhones(Set<SmartPhone> smartSmartPhones) {
+        return smartSmartPhones.stream().filter(smartSmartPhone -> smartSmartPhone.getSmartPhonePrice() <= 10000.0).toList();
     }
 }
